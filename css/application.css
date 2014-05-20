@@ -5,41 +5,96 @@
 body {
     margin: 0;
     /* TODO use the Google Font 'Bitter' */
+    font-family: 'Bitter';
     font-size: 100%;
 }
 
 div, h1, h2, h3, h4, h5, h6, p, ul, ol, a {
+    font-family:'Bitter';
     /* TODO because we are using Foundation, we have to override Foundation's default font family. Use the Google Font 'Bitter' here. */
 }
 
 h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bitter';
+    color: #fffdf0;
     /* TODO make the font color of all our headers #fffdf0 */
 }
 
-/* ---------------------------------------------- */
+.is-active {
+    font-weight: bold;
+}
+
 /* Header --------------------------------------- */
 /* ---------------------------------------------- */
 
 header {}
 
+
 header h1 {
+    font-size: 4.5em;
+    text-shadow: 2px 2px rgba(34,28,18,.75);
     /* TODO make the font size larger than Foundation's default; I uesd 4.5em */
     /* TODO add a text-shadow on the h1 using rgba(34, 28, 18,.75) */
 }
 
 header .tagline h4 {
+    font-style: italic;
+    text-shadow: 2px 2px rgba(34,28,18,.75);
     /* TODO make the tagline italic; you'll have to work hard to override Foundation's font-style: normal on all headers! */
     /* TODO add the same text-shadow */
 }
 
 header .tagline {
+    text-align: center;
     /* TODO center the text */
-    background: rgba(34, 28, 18,.5); /* I added this transparent background bar for you. */
+    background: rgba(34, 28, 18,.5);
+     /* I added this transparent background bar for you. */
     /* TODO add some padding to give it space around the text */
+    padding: 50px;
+    position: absolute;
+    top: 25%;
+    width: 100%;
+    z-index: 1000;
+    height: auto;
     /* TODO absolutely position the tagline bar at top: 35%. add a width so that it goes all the way across. */
     /* TODO when you make the slideshow work, the tagline will get hidden. why? what line of CSS do you have to write to make it appear ABOVE the slideshow? */
 }
 
+  @media (max-width: 767px) {
+      header .tagline {
+        top: 10%;
+    }
+    header h1 {
+        font-size: 3em;
+    }
+    header h4 {
+        font-size: 1.5em;
+    }
+}
+
+
+  @media (max-width: 480px) {
+      header .tagline {
+        top: 0%;
+      }
+      header h1 {
+        font-size:2em;
+      }
+      header h4 {
+        font-size: 1em;
+      }
+    }
+
+
+
+
+/*@media only screen and (max-width: 767px) {
+
+  header .tagline {
+    top: 0%;
+  }
+
+}*/
 
 
 
@@ -57,18 +112,55 @@ section {
 /* ---------------------------------------------- */
 /* Address, Hours, Directions ------------------- */
 /* ---------------------------------------------- */
+.top-bar {
+    z-index: 2000;
+}
+
+
 
 .address {
+    background-color: #221c12;
+    color: #fffdf0;
+    text-align: center;
+    height: auto;
+    overflow: auto;
     /* TODO give this section a background of #221c12 and a color of #fffdf0. make the text centered */
 }
 
+.address:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+}
+
+
 .location,
 .hours {
+    padding: -2px;
     /* TODO give these two divs some padding so that they line up with the map */
 }
 
-.hours-label { /* TODO style these with the appropriate font styles (bold/italic) */ }
-.hours-value { /* TODO style these with the appropriate font styles (bold/italic) */ }
+
+.hours:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+ }
+
+.hours-label { 
+    font-weight: bold;
+    /* TODO style these with the appropriate font styles (bold/italic) */ 
+}
+.hours-value { 
+    font-style: italic;
+    /* TODO style these with the appropriate font styles (bold/italic) */ 
+}
+
 
 
 
@@ -77,53 +169,130 @@ section {
 /* ---------------------------------------------- */
 
 .menu {
+    color: #221c12;
+    background-color: #fffdf0;
+    padding-bottom: 25px;
     /* TODO give this section a color of #221c12 and a background of #fffdf0. give it some bottom padding so there's space below the text. */
 }
 
-.menu h2 {
+.menu-action {
+    font-size: 1.5rem;
+    font-style: italic;
+    padding-bottom: 36px;
+    text-align: center;
     /* TODO make this font size larger than the Foundation default */
 }
 
 .menu h2, .menu h3, .menu h4 {
+    color: #221c12;
     /* TODO give these headers a color of #221c12 */
 }
 
-
+h2, .menu-section {
+    text-align: center;
+}
 /* TODO center the text of the h2 and menu-section */
 
-.menu-section h3 a {
+.menu-section h3 a:{
+    color: rgba(34, 28, 18, .75);
+    border-bottom: 3px;
+    padding-bottom: 25px;
+    -o-transition: opacity 1s ease;
+    -moz-transition: opacity 1s ease;
+    -counter-resetkhtml-transition: opacity 1s ease;
+    -webkit-transition: opacity 1s ease;
+    -ms-transition: opacity 1s ease;
+    transition: opacity 1s ease;
+ 
     /* TODO make menu section links a semi-transparent color rgba(34, 28, 18, .75). give them a 3px bottom border and give it a bit of space */
     /* TODO give the menu section links a CSS transition so that when you hover them, the color fades in slowly */
 }
 
-
+.menu-section h3 a:hover {
+    opacity: 1;
+    border-bottom: 3px solid rgba(34, 28, 18, 1);
+    
+}
 /* TODO on the menu section links, when hovered, make them the same color but 100% opacity instead of 75% (.75) and make the bottom border the same color. */
-
+.menu-section h3 a:active {
+    color: rgba(34, 28, 18, 1);
+    
+}
 /* TODO on the ACTIVE menu section links, make them look the same as hovered ones. How do you know if they are active? */
 
 .menu-section-content {
+    margin-bottom: 20px;
     /* TODO give this some space below the menu links */
 }
 
 
 .menu-item {
+    margin-bottom: 20px;
     /* TODO give each menu item some bottom margin */
 }
 
 /* TODO style the menu-item-name to be bold */
+.menu-item-name {
+    font-weight: bold;
+}
 
+.no-price {
+    display: inline;
+}
 /* TODO style the menu-item-description to be italic and be in one line with the price. You don't need to use Foundation classes to do this, but if you want to try and see, go for it! */
-
+.menu-item-description {
+    font-style: italic;
+    display: inline;
+}
 /* TODO style the menu-item-price to be bold, 50% opacity, in line with the description but have some space to the left of it. */
-
+.menu-item-price {
+    font-weight: bold;
+    opacity: 0.5;
+    display: inline;
+    padding-left: 10px;
+}
 
 /* ---------------------------------------------- */
 /* Social Media/Contact ------------------------- */
 /* ---------------------------------------------- */
 
 .contact {
+    background: #221c12 url('../images/symbols-bottom.png') no-repeat 0 -160%;
+    padding-top: 20em;
+    padding-bottom: 10em;
+    text-align: center;
+    width:100%;
+
+}
+
+.email {
+    padding-bottom: 2em;
+}
+
+.social {
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 2em;
+}
+
     /* TODO add the dark brown background color, and the background image symbols-bottom. Change the background-position so that the bottom of it shows (where the symbols start to fade out). */
     /* TODO add some top and bottom padding so that the content doesn't overlap the background image. Note how the padding changes the location of the background image. */
+
+.social-links a{
+    display: inline-block;
+    opacity: 0.75;
+    -o-transition: opacity 1s ease;
+    -moz-transition: opacity 1s ease;
+    -counter-resetkhtml-transition: opacity 1s ease;
+    -webkit-transition: opacity 1s ease;
+    -ms-transition: opacity 1s ease;
+    transition: opacity 1s ease;
 }
+
+.social-links a:hover {
+    opacity: 1;
+}
+
+
 
 /* TODO make the .social-links links be displayed in a row with some space between them. make them 50% opacity, and fade to 100% opacity when you hover over them. */
